@@ -13,10 +13,11 @@ class ProductTemplate(models.Model):
         combinations = self.env['product.template.attribute.value'].search([('product_tmpl_id', '=', self.id)])
         # filtrar combinaciones que tengan product.atrubute igual a color
         combinations = combinations.filtered(lambda c: c.attribute_id.id == 6)
-
+        combination_indices = [item.combination_indices for item in product_products]
+        combination_indices = ','.join(combination_indices)
+        combination_indices = combination_indices.split(',')
         for combination in combinations:
             Product = self.env['product.product']
-            combination_indices = product_products.combination_indices.split(',')
             if str(combination.id) in combination_indices:
                 continue
             product_variant = self._get_variant_for_combination(combination)

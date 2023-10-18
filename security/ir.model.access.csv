@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_create_variants_create_variants,create_variants.create_variants,model_create_variants_create_variants,base.group_user,1,1,1,1
